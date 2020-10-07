@@ -37,9 +37,11 @@ class Restaurant
 
     def menu_dish_names
         #will return a list of dish names in all caps
+        new_dishes = []
         @dishes.each do |dish|
-            dish.upcase
+           new_dishes << dish.upcase
         end
+        return new_dishes
     end
 
     def announce_closing_time(close_time)
@@ -50,7 +52,7 @@ class Restaurant
              "#{@name} will be closing at #{close_time}:00AM"
         else #close_time >= 12
             close_time -= 12
-            "#{@name} will be closing at #{close_time}:00PM"
+             "#{@name} will be closing at #{close_time}:00PM"
         end
     
     end
