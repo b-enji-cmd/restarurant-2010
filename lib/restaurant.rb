@@ -1,10 +1,11 @@
 class Restaurant
-    attr_reader :opening_time , :name , :dishes , :military_time
+    attr_reader :opening_time , :name , :dishes , :military_time 
     def initialize (opening_time, name )
         @opening_time = opening_time
         @name = name
         @dishes = []
         @military_time = military_time
+      
        
     end
     def closing_time(closing_hour)
@@ -15,7 +16,7 @@ class Restaurant
         @military_time += closing_hour
         @military_time = "#{@military_time}:00"
         return @military_time
-       # @opening_time += closing_hour
+       
 
     end
 
@@ -39,5 +40,18 @@ class Restaurant
         @dishes.each do |dish|
             dish.upcase
         end
+    end
+
+    def announce_closing_time(close_time)
+        # change the format of the end time to a 12 hour format
+        
+        close_time += @opening_time.to_i
+        if close_time < 12
+             "#{@name} will be closing at #{close_time}:00AM"
+        else #close_time >= 12
+            close_time -= 12
+            "#{@name} will be closing at #{close_time}:00PM"
+        end
+    
     end
 end
